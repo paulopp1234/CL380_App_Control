@@ -1,15 +1,21 @@
-# CL380 App Control
+# App Startup Control
 
-Remote startup control for the CL380 LCD Production Tester.
+Remote startup control for multiple applications.
 
-The tester reads `status.txt` before its main window opens.
+Each application checks only its own control entry in `status.txt` before opening its main window.
 
-Use exactly one of these values:
+Current entries:
 
-- `ALLOW_START` — tester is allowed to open.
-- `DO_NOT_START` — tester is blocked and exits.
+- `ALLOW_START` — existing CL380 LCD Production Tester control.
+- `OTMR CCF EDYTOR - ALLOW_START` — OTMR CCF Editor is allowed to open.
 
-The tester is intentionally fail-closed. If `status.txt` cannot be reached, GitHub is unavailable, the network is unavailable, or the file contains an unknown value, the tester does not start.
+To block the OTMR CCF Editor, change only its line to:
+
+- `OTMR CCF EDYTOR - DO_NOT_START`
+
+The OTMR CCF Editor ignores the CL380 control line and uses only the line beginning `OTMR CCF EDYTOR - `.
+
+The applications are intentionally fail-closed. If `status.txt` cannot be reached, GitHub/network access fails, the application's own line is missing, duplicated, or contains an unknown value, that application does not start.
 
 Current control URL:
 

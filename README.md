@@ -20,3 +20,7 @@ The applications are intentionally fail-closed. If `status.txt` cannot be reache
 Current control URL:
 
 `https://raw.githubusercontent.com/paulopp1234/CL380_App_Control/main/status.txt`
+
+## Hitachi JetView LCD Production Tester
+
+Version 2.0.1 checks its [dedicated startup file](HitachiJetViewTester/status.txt) at each launch. Set its single line to `ALLOW_START` to enable startup or `DO_NOT_START` to block startup. If the file is unavailable or invalid, the Hitachi tester closes before opening its main window.
